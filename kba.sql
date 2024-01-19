@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jan 2024 pada 09.47
+-- Waktu pembuatan: 19 Jan 2024 pada 10.25
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.0.30
 
@@ -24,29 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahan_awal`
+-- Struktur dari tabel `formulir_kba`
 --
 
-CREATE TABLE `bahan_awal` (
-  `id_bahan_awal` int(11) NOT NULL,
-  `nama_bahan_awal` varchar(255) DEFAULT NULL,
-  `jenis_bahan_awal` enum('Bahan aktif','Bahan penolong','Bahan kemas','') NOT NULL,
-  `no_bahan_awal` int(11) NOT NULL,
-  `tanggal_pembelian` date NOT NULL,
-  `produsen_bahan_awal` varchar(255) NOT NULL,
-  `pemasok_bahan_awal` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `form_kba`
---
-
-CREATE TABLE `form_kba` (
-  `id_form_KBA` int(11) NOT NULL,
-  `id_bahan_awal` int(11) NOT NULL,
-  `id_keluhan` int(11) NOT NULL,
+CREATE TABLE `formulir_kba` (
+  `id_formulir_KBA` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `jenis_bahan` enum('Bahan Aktif','Bahan Penolong','Bahan Kemas') NOT NULL,
+  `nama_bahan` varchar(255) NOT NULL,
+  `no_bets/lot` varchar(255) NOT NULL,
+  `jumlah_bahan` varchar(255) NOT NULL,
+  `produsen_bahan` varchar(255) NOT NULL,
+  `pemasok_bahan` varchar(255) NOT NULL,
+  `tanggal_datang` date NOT NULL,
+  `no_sp/oc/kontrak` int(25) NOT NULL,
+  `no_ppb` int(25) NOT NULL,
+  `no_lab` varchar(255) NOT NULL,
+  `alasan_keluhan` text NOT NULL,
+  `rekomendasi_bidang_pengawas_mutu` text NOT NULL,
+  `catatan` text NOT NULL,
   `distribusi_bidang` enum('Bidang Pengadaan','Bidang SCM','Bidang LBA','Arsip') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -58,7 +54,7 @@ CREATE TABLE `form_kba` (
 
 CREATE TABLE `investigasi_hasil_uji` (
   `id_investigasi` int(11) NOT NULL,
-  `id_keluhan` int(11) NOT NULL,
+  `id_formulir_KBA` int(11) NOT NULL,
   `no_huls` varchar(50) DEFAULT NULL,
   `nama_bahan` varchar(255) DEFAULT NULL,
   `no_bets` varchar(50) DEFAULT NULL,
@@ -79,31 +75,17 @@ CREATE TABLE `investigasi_hasil_uji` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `keluhan`
---
-
-CREATE TABLE `keluhan` (
-  `id_keluhan` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `nama_pengirim_keluhan` varchar(255) NOT NULL,
-  `tanggal_keluhan` date NOT NULL,
-  `alasan_keluhan` text NOT NULL,
-  `status_keluhan` enum('selesai','tidak selesai') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `tanggapan`
 --
 
 CREATE TABLE `tanggapan` (
   `id_tanggapan` int(11) NOT NULL,
-  `id_form_KBA` int(11) NOT NULL,
+  `id_formulir_KBA` int(11) NOT NULL,
   `tanggapan_bidang_p4` text NOT NULL,
   `tanggapan_bidang_pengadaan` text NOT NULL,
   `rencana_tgl_penyelesaian` date NOT NULL,
-  `tinjauan_tanggapan` text NOT NULL
+  `tinjauan_tanggapan` text NOT NULL,
+  `status` enum('Selesai','Tidak Selesai','','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -116,7 +98,7 @@ CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `level` varchar(50) DEFAULT NULL
+  `level` int(1) DEFAULT NULL COMMENT '1-Admin\r\n2-Petugas Sampling\r\n3-Asman LAB\r\n4-Analis LAB\r\n5-Manager QC\r\n6-GM QC\r\n7-GM QA'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -124,39 +106,23 @@ CREATE TABLE `users` (
 --
 
 --
--- Indeks untuk tabel `bahan_awal`
+-- Indeks untuk tabel `formulir_kba`
 --
-ALTER TABLE `bahan_awal`
-  ADD PRIMARY KEY (`id_bahan_awal`);
-
---
--- Indeks untuk tabel `form_kba`
---
-ALTER TABLE `form_kba`
-  ADD PRIMARY KEY (`id_form_KBA`),
-  ADD KEY `id_bahan_awal` (`id_bahan_awal`,`id_keluhan`),
-  ADD KEY `id_keluhan` (`id_keluhan`);
+ALTER TABLE `formulir_kba`
+  ADD PRIMARY KEY (`id_formulir_KBA`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indeks untuk tabel `investigasi_hasil_uji`
 --
 ALTER TABLE `investigasi_hasil_uji`
-  ADD PRIMARY KEY (`id_investigasi`),
-  ADD KEY `id_keluhan` (`id_keluhan`);
-
---
--- Indeks untuk tabel `keluhan`
---
-ALTER TABLE `keluhan`
-  ADD PRIMARY KEY (`id_keluhan`),
-  ADD KEY `id_user` (`id_user`);
+  ADD PRIMARY KEY (`id_investigasi`);
 
 --
 -- Indeks untuk tabel `tanggapan`
 --
 ALTER TABLE `tanggapan`
-  ADD PRIMARY KEY (`id_tanggapan`),
-  ADD KEY `id_form_KBA` (`id_form_KBA`);
+  ADD PRIMARY KEY (`id_tanggapan`);
 
 --
 -- Indeks untuk tabel `users`
@@ -169,28 +135,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `bahan_awal`
+-- AUTO_INCREMENT untuk tabel `formulir_kba`
 --
-ALTER TABLE `bahan_awal`
-  MODIFY `id_bahan_awal` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `form_kba`
---
-ALTER TABLE `form_kba`
-  MODIFY `id_form_KBA` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `formulir_kba`
+  MODIFY `id_formulir_KBA` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `investigasi_hasil_uji`
 --
 ALTER TABLE `investigasi_hasil_uji`
   MODIFY `id_investigasi` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `keluhan`
---
-ALTER TABLE `keluhan`
-  MODIFY `id_keluhan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tanggapan`
@@ -209,29 +163,16 @@ ALTER TABLE `users`
 --
 
 --
--- Ketidakleluasaan untuk tabel `form_kba`
---
-ALTER TABLE `form_kba`
-  ADD CONSTRAINT `form_kba_ibfk_1` FOREIGN KEY (`id_bahan_awal`) REFERENCES `bahan_awal` (`id_bahan_awal`),
-  ADD CONSTRAINT `form_kba_ibfk_2` FOREIGN KEY (`id_keluhan`) REFERENCES `investigasi_hasil_uji` (`id_keluhan`);
-
---
 -- Ketidakleluasaan untuk tabel `investigasi_hasil_uji`
 --
 ALTER TABLE `investigasi_hasil_uji`
-  ADD CONSTRAINT `investigasi_hasil_uji_ibfk_1` FOREIGN KEY (`id_keluhan`) REFERENCES `keluhan` (`id_keluhan`);
-
---
--- Ketidakleluasaan untuk tabel `keluhan`
---
-ALTER TABLE `keluhan`
-  ADD CONSTRAINT `keluhan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `investigasi_hasil_uji_ibfk_1` FOREIGN KEY (`id_formulir_KBA`) REFERENCES `keluhan` (`id_keluhan`);
 
 --
 -- Ketidakleluasaan untuk tabel `tanggapan`
 --
 ALTER TABLE `tanggapan`
-  ADD CONSTRAINT `tanggapan_ibfk_1` FOREIGN KEY (`id_form_KBA`) REFERENCES `form_kba` (`id_form_KBA`);
+  ADD CONSTRAINT `tanggapan_ibfk_1` FOREIGN KEY (`id_formulir_KBA`) REFERENCES `form_kba` (`id_form_KBA`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
