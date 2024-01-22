@@ -10,7 +10,7 @@
                         </a>
                         <hr class="mb-0">
                         <div class="sb-sidenav-menu-heading">MAIN MENU</div>
-                        <a class="nav-link" href="<?= $main_url ?>index.php">
+                        <a class="nav-link" href="<?= $main_url ?>user/add-user.php">
                             <div class="sb-nav-link-icon"></div>
                             User
                         </a>
@@ -24,6 +24,30 @@
                             <div class="sb-nav-link-icon"></div>
                             Master Data
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                <!-- <i class="fa-solid fa-minus"></i> -->
+                                <p>Obyek Investigasi</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                <!-- <i class="far fa-circle nav-icon text-sm"></i> -->
+                                <p>Hasil Pemeriksaan</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                <!-- <i class="far fa-circle nav-icon text-sm"></i> -->
+                                <p>Keterangan</p>
+                                </a>
+                            </li>
+                        </ul>
                         <a class="nav-link" href="<?= $main_url ?>index.php">
                             <div class="sb-nav-link-icon"></div>
                             Laporan
