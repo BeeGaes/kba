@@ -2,6 +2,8 @@
 
 require_once "../inc_koneksi.php";
 
+$keluhan_bahan_awal = mysqli_query($koneksi, "SELECT * FROM formulir_KBA WHERE id = 1");
+// $data = mysqli_fetch_array($keluhan_bahan_awal);
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +28,7 @@ require_once "../inc_koneksi.php";
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form action="proceslogin.php" method="POST">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="username" name="username" type="text" pattern="[A-Za-z0-9]{3,}" title="kombinasi angka dan huruf minimal 3 karakter" placeholder="username" autocomplete="off" required />
                                                 <label for="username">Username</label>
@@ -35,18 +37,11 @@ require_once "../inc_koneksi.php";
                                                 <input class="form-control" id="inputPassword" type="password" placeholder="Password" minlength="4" name="password" required/>
                                                 <label for="inputPassword">Password</label>
                                             </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                                <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="index.html">Login</a>
-                                            </div>
+                                            <button type="submit" name="login" class="btn btn-primary col-12 rounded-pill my-2">Login</button>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                        <div class="text-muted small">Copyright &copy; Keluhan Bahan Awal <?= date("Y") ?></div>
                                     </div>
                                 </div>
                             </div>
@@ -54,19 +49,6 @@ require_once "../inc_koneksi.php";
                     </div>
                 </main>
             </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

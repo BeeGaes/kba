@@ -19,7 +19,7 @@ if (isset($_POST['simpan'])){
         return;
     }
 
-    mysqli_query($koneksi, "INSERT INTO users VALUES(null,'$username','$pass','$nama','$level')");
+    mysqli_query($koneksi, "INSERT INTO users VALUES(null,'$username','$nama','$pass','$level')");
 
     header("location:add-user.php?msg=added");
     return;
