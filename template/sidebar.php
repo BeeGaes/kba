@@ -1,63 +1,72 @@
-<div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion bg-light" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-                <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Home</div>
-                    <a class="nav-link" href="<?= $main_url ?>index.php">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard
-                    </a>
-                    <hr class="mb-0">
-                    <div class="sb-sidenav-menu-heading">MAIN MENU</div>
-                    <a class="nav-link" href="<?= $main_url ?>user/add-user.php">
-                        <div class="sb-nav-link-icon"></div>
-                        User
-                    </a>
-                    <a class="nav-link" href="<?= $main_url ?>index.php">
-                        <div class="sb-nav-link-icon"></div>
-                        Ganti Password
-                    </a>
-                    <hr class="mb-0">
-                    <div class="sb-sidenav-menu-heading">Data</div>
-                    <a class="nav-link" href="<?= $main_url ?>index.php">
-                        <div class="sb-nav-link-icon"></div>
-                        Master Data
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <!-- <i class="fa-solid fa-minus"></i> -->
-                                <p>Form KBA </p>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <!-- <i class="far fa-circle nav-icon text-sm"></i> -->
-                                <p>Hasil Pemeriksaan</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <!-- <i class="far fa-circle nav-icon text-sm"></i> -->
-                                <p>Keterangan</p>
-                            </a>
-                        </li>
-                    </ul>
-                    <a class="nav-link" href="<?= $main_url ?>index.php">
-                        <div class="sb-nav-link-icon"></div>
-                        Laporan
-                    </a>
-                    <hr class="mb-0">
-                </div>
-            </div>
-            <div class="sb-sidenav-footer border">
-                <div class="small">Logged in as:</div>
-                <?= "Admin" ?>
-            </div>
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="<?= $main_url ?>dashboard.php" class="brand-link">
+        <span class="brand-text font-weight-light">Keluhan Bahan Awal</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+                <a href="<?= $main_url ?>dashboard.php"class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt text-sm"></i>
+                <p>Dashboard</p>
+            </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-folder text-sm"></i>
+                <p>
+                    Master
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-circle nav-icon text-sm"></i>
+                            <p>Form KBA</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-circle nav-icon text-sm"></i>
+                            <p>Investigasi Huls</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+                <a href="<?= $main_url ?>dashboard.php"class="nav-link">
+                <i class="nav-icon fas fa-comment-dots text-sm"></i>
+                <p>Tanggapan</p>
+            </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-cog text-sm"></i>
+                <p>
+                    Pengaturan
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="<?= $main_url ?>user/data-user.php" class="nav-link">
+                            <i class="far fa-circle nav-icon text-sm"></i>
+                            <p>Users</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            </ul>
         </nav>
+        <!-- /.sidebar-menu -->
     </div>
+    <!-- /.sidebar -->
+</aside>
