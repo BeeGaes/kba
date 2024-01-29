@@ -1,6 +1,14 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION["ssLogin"])) {
+    header("location: auth/login.php");
+    exit();
+}
+
 require "config/config.php";
+require "config/functions.php";
 
 $title = "Dashboard - Keluhan Bahan Awal";
 require "template/header.php";

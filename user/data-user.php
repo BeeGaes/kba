@@ -1,6 +1,14 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION["ssLogin"])) {
+    header("location: ../auth/login.php");
+    exit();
+}
+
 require "../config/config.php";
+require "../config/functions.php";
 require "../module/mode-user.php";
 
 $title = "Users";
@@ -44,12 +52,51 @@ require "../template/sidebar.php";
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Foto</th>
                                 <th>Username</th>
-                                <th>Name</th>
+                                <th>Fullname</th>
                                 <th>Level User</th>
                                 <th style="width: 10%;">Operasi</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php 
+                            $no = 1;
+                            $users = getData("SELECT * FROM tbl_user");
+                            foreach ($users as $user) : ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><img src="../asset/image/<?= $user['foto'] ?>" class="rounded-circle" alt="" width="60px"></td>
+                                    <td><?= $user['username'] ?></td>
+                                    <td><?= $user['fullname'] ?></td>
+                                    <td>
+                                        <?php
+                                        if ($user['level'] == 1) {
+                                            echo "Administrator";
+                                        } else if ($user['level'] == 2)  {
+                                            echo "Petugas Sampling";
+                                        } else if ($user['level'] == 3) {
+                                            echo "Asman Lab";
+                                        } else if ($user['level'] == 4) {
+                                            echo "Analis Lab";
+                                        } else if ($user['level'] == 5) {
+                                            echo "Manager QC";
+                                        } else if ($user['level'] == 6) {
+                                            echo "Manager QA";
+                                        } else if ($user['level'] == 7) {
+                                            echo "GM QC";
+                                        } else {
+                                            echo "GM QA";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <a href="edit-user.php?id=<?= $user['userid'] ?>" class="btn btn-sm btn-warning" title="edit user"><i class="fas fa-edit"></i></a>
+                                        <a href="del-user.php?id=<?= $user['userid'] ?>&foto=<?= $user['foto'] ?>" class="btn btn-sm btn-danger" title="hapus user" onclick="return confirm('Anda yakin akan menghapus user ini?')"><i class="fas fa-user-times"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
                     </table>
                 </div>
             </div>

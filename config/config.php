@@ -5,7 +5,7 @@ date_default_timezone_set('Asia/Jakarta');
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$dbname = 'kba';
+$dbname = 'db_kba';
 
 $koneksi = mysqli_connect($host, $user, $pass, $dbname);
 
