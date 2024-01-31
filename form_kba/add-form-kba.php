@@ -9,12 +9,27 @@ if (!isset($_SESSION["ssLogin"])) {
 
 require "../config/config.php";
 require "../config/functions.php";
-// require "../module/mode-form-kba.php";
+require "../module/mode-form-kba.php";
+
+
 
 $title = "Tambah Form Kba";
 require "../template/header.php";
 require "../template/navbar.php";
 require "../template/sidebar.php";
+
+$alert = '';
+
+if (isset($_POST['simpan'])) {
+    if (insert($_POST)) {
+        $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="icon fas fa-check"></i> Form KBA berhasil ditambahkan..
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+    }
+}
 
 ?>
 
@@ -51,6 +66,9 @@ require "../template/sidebar.php";
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-8 mb-3">
+                                <?php if ($alert != '') {
+                                    echo $alert;
+                                } ?>
                                 <div class="form-group">
                                     <label for="jenis_bahan">Jenis Bahan</label>
                                     <select name="jenis_bahan" id="jenis_bahan" class="form-control">
@@ -65,50 +83,58 @@ require "../template/sidebar.php";
                                     <input type="text" name="nama_bahan" class="form-control" id="nama_bahan" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="no_bets/lot">No.Bets/Lot</label>
-                                    <input type="text" name="no_bets/lot" class="form-control" id="no_bets/lot" required>
+                                    <label for="no_bets_lot">No.Bets/Lot</label>
+                                    <input type="text" name="no_bets_lot" class="form-control" id="no_bets_lot"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="jumlah_bahan">Jumlah Bahan</label>
-                                    <input type="text" name="jumlah_bahan" class="form-control" id="jumlah_bahan" required>
+                                    <input type="text" name="jumlah_bahan" class="form-control" id="jumlah_bahan"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="produsen_bahan">Produsen</label>
-                                    <input type="text" name="produsen_bahan" class="form-control" id="produsen_bahan" required>
+                                    <input type="text" name="produsen_bahan" class="form-control" id="produsen_bahan"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="pemasok_bahan">Pemasok</label>
-                                    <input type="text" name="pemasok_bahan" class="form-control" id="pemasok_bahan" required>
+                                    <input type="text" name="pemasok_bahan" class="form-control" id="pemasok_bahan"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="tanggal_datang">Tanggal Datang</label>
-                                    <input type="date" name="tanggal_datang" class="form-control" id="tanggal_datang" required>
+                                    <input type="date" name="tanggal_datang" class="form-control" id="tanggal_datang"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="no_sp/oc/kontrak">No. SP/OC/Kontrak</label>
-                                    <input type="text" name="no_sp/oc/kontrak" class="form-control" id="no_sp/oc/kontrak" required>
-                            </div>
-                            <div class="form-group">
+                                    <label for="no_sp_oc_kontrak">No. SP/OC/Kontrak</label>
+                                    <input type="text" name="no_sp_oc_kontrak" class="form-control"
+                                        id="no_sp_oc_kontrak" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="no_ppb">No. PPB</label>
                                     <input type="text" name="no_ppb" class="form-control" id="no_ppb" required>
-                            </div>
-                            <div class="form-group">
+                                </div>
+                                <div class="form-group">
                                     <label for="no_lab">No. LAB</label>
                                     <input type="text" name="no_lab" class="form-control" id="no_lab" required>
-                            </div>
-                            <div class="form-group">
+                                </div>
+                                <div class="form-group">
                                     <label for="alasan_keluhan">Alasan keluhan</label>
-                                    <input type="text" name="alasan_keluhan" class="form-control" id="alasan_keluhan" required>
-                            </div>
-                            <div class="form-group">
+                                    <input type="text" name="alasan_keluhan" class="form-control" id="alasan_keluhan"
+                                        required>
+                                </div>
+                                <div class="form-group">
                                     <label for="rekomendasi_bidang">Rekomendasi Bidang Pengawas Mutu</label>
-                                    <textarea name="rekomendasi_bidang" id="rekomendasi_bidang" rows="1" class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
+                                    <textarea name="rekomendasi_bidang" id="rekomendasi_bidang" rows="1"
+                                        class="form-control" required></textarea>
+                                </div>
+                                <div class="form-group">
                                     <label for="catatan">Catatan</label>
                                     <input type="text" name="catatan" class="form-control" id="catatan" required>
-                            </div>
-                            <div class="form-group">
+                                </div>
+                                <div class="form-group">
                                     <label for="distribusi_bidang">Distribusi</label>
                                     <select name="distribusi_bidang" id="distribusi_bidang" class="form-control">
                                         <option value="">-- Distribusi Bidang --</option>
@@ -117,16 +143,16 @@ require "../template/sidebar.php";
                                         <option value="3">Bidang LBA</option>
                                         <option value="3">Arsip</option>
                                     </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
     </section>
 
-<?php 
+    <?php
 
-require "../template/footer.php";
+    require "../template/footer.php";
 
-?>
+    ?>

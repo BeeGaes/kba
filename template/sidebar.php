@@ -26,7 +26,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="<?= $main_url ?>form_kba" class="nav-link <?= menuForm_kba() ?>">
                             <i class="far fa-circle nav-icon text-sm"></i>
                             <p>Form KBA</p>
                         </a>

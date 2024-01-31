@@ -99,4 +99,21 @@ function menuUser(){
     return $result;
 }
 
+function menuMaster() {
+    if (userMenu() == 'form_kba') {
+        $result = 'menu-is-opening menu-open';
+    } else {
+        $result = null;
+    }
+    return $result;
+}
+
+function menuForm_kba(){
+    if (userMenu() == 'form_kba') {
+        $result = 'active';
+    } else {
+        $result = null;
+    }
+    return $result;
+}
 ?>
