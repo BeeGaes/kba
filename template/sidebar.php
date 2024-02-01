@@ -32,19 +32,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="<?= $main_url ?>huls" class="nav-link <?= menuHuls() ?>">
                             <i class="far fa-circle nav-icon text-sm"></i>
                             <p>Investigasi Huls</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-circle nav-icon text-sm"></i>
+                            <p>Tanggapan</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
-            <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-                <a href="<?= $main_url ?>dashboard.php"class="nav-link">
-                <i class="nav-icon fas fa-comment-dots text-sm"></i>
-                <p>Tanggapan</p>
             </a>
             </li>
             <li class="nav-item <?= menuSetting() ?>">
