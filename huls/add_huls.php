@@ -43,7 +43,7 @@ if (isset($_POST['simpan'])){
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= $main_url ?>dashboard.php">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?= $main_url ?>user/data-huls.php">Investigasi Huls</a>
+                        <li class="breadcrumb-item"><a href="<?= $main_url ?>huls/index.phpa">Investigasi Huls</a>
                         </li>
                         <li class="breadcrumb-item active">Add Huls</li>
                     </ol>
@@ -70,43 +70,43 @@ if (isset($_POST['simpan'])){
                                 echo $alert;
                             } ?>
                                 <div class="form-group">
-                                    <label for="no_huls">No. HULS</label>
-                                    <input type="text" name="no_huls" class="form-control" id="nao_huls" required>
+                                    <label for="no_huls">No. HULS :</label>
+                                    <input type="text" name="no_huls" class="form-control" id="no_huls" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Nama Bahan</label>
+                                    <label for="name">Nama Bahan :</label>
                                     <input type="text" name="nama_bahan" class="form-control" id="nama_bahan" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="no_bets">No. Bets</label>
+                                    <label for="no_bets">No. Bets :</label>
                                     <input type="text" name="no_bets" class="form-control" id="no_bets" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="no_spesifikasi">No. Spesifikasi</label>
+                                    <label for="no_spesifikasi">No. Spesifikasi :</label>
                                     <input type="text" name="no_spesifikasi" class="form-control" id="no_spesifikasi" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="no_metode_analisa">No. Metode Analisa</label>
+                                    <label for="no_metode_analisa">No. Metode Analisa :</label>
                                     <input type="text" name="no_metode_analisa" class="form-control" id="no_metode_analisa" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="hasil_pengujian">Hasil Pengujian</label>
+                                    <label for="hasil_pengujian">Hasil Pengujian :</label>
                                     <input type="text" name="hasil_pengujian" class="form-control" id="hasil_pengujian" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="persyaratan_hasil_uji">Persyaratan Hasil Uji</label>
+                                    <label for="persyaratan_hasil_uji">Persyaratan Hasil Uji :</label>
                                     <input type="text" name="persyaratan_hasil_uji" class="form-control" id="persyaratan_hasil_uji" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tanggal_sampling">Tanggal Sampling</label>
+                                    <label for="tanggal_sampling">Tanggal Sampling :</label>
                                     <input type="date" name="tanggal_sampling" class="form-control" id="tanggal_sampling" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tanggal_pengujian">Tanggal Pengujian</label>
+                                    <label for="tanggal_pengujian">Tanggal Pengujian :</label>
                                     <input type="date" name="tanggal_pengujian" class="form-control" id="tanggal_pengujian" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Nama Analis</label>
+                                    <label for="name">Nama Analis :</label>
                                     <input type="text" name="nama_analis" class="form-control" id="nama_analis" required>
                                 </div>
                             </div>

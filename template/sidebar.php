@@ -16,7 +16,7 @@
                 <p>Dashboard</p>
             </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?= menuMaster() ?>">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-folder text-sm"></i>
                 <p>
@@ -38,7 +38,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="<?= $main_url ?>tanggapan" class="nav-link <?= menuTanggapan() ?>">
                             <i class="far fa-circle nav-icon text-sm"></i>
                             <p>Tanggapan</p>
                         </a>

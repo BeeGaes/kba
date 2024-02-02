@@ -104,6 +104,8 @@ require "template/sidebar.php";
                 <!-- ./col -->
             </div>
         </div>
+    </div>
+</div>
         <!-- /.content -->
 
         <?php

@@ -31,4 +31,23 @@
 <script src="<?= $main_url ?>asset/AdminLTE-3.2.0/plugins/chart.js/Chart.min.js"></script>
 </body>
 
+
+<script>
+    $(function() {
+        let tema =sessionStorage.getItem('tema');
+        if (tema) {
+            $('body').addClass(tema);
+            $('#cekDark').prop('checked', true);
+        }
+        $(document).on('click', "#cekDark", function(){
+            if ($('#cekDark').is(':checked')) {
+                $('body').addClass('dark-mode');
+                sessionStorage.setItem('tema', 'dark-mode');
+            } else {
+                $('body').removeClass('dark-mode');
+                sessionStorage.removeItem('tema');
+            }
+        })
+    })
+</script>
 </html>

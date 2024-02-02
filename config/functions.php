@@ -100,7 +100,7 @@ function menuUser(){
 }
 
 function menuMaster() {
-    if (userMenu() == 'form_kba' or userMenu() == 'huls') {
+    if (userMenu() == 'form_kba' or userMenu() == 'huls' or userMenu() == 'tanggapan') {
         $result = 'menu-is-opening menu-open';
     } else {
         $result = null;
@@ -119,6 +119,15 @@ function menuForm_kba(){
 
 function menuHuls(){
     if (userMenu() == 'huls') {
+        $result = 'active';
+    } else {
+        $result = null;
+    }
+    return $result;
+}
+
+function menuTanggapan(){
+    if (userMenu() == 'tanggapan') {
         $result = 'active';
     } else {
         $result = null;
